@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const GRAVITY_VEC = Vector2(0, 900)
+var GRAVITY_VEC = Vector2(0, 900)
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
 const MIN_ONAIR_TIME = 0.1
@@ -9,6 +9,8 @@ const JUMP_SPEED = 200
 const SIDING_CHANGE_SPEED = 10
 const BULLET_VELOCITY = 1
 const SHOOT_TIME_SHOW_WEAPON = 0.2
+
+const FIREBALL = preload("res://Fireball.tscn")
 
 var linear_vel = Vector2()
 var onair_time = 0 #
@@ -57,9 +59,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("left"):
 		target_speed += -1
 		$witch_sprite.flip_h = true
+		if sign($firewand.position.x) == 1:
+			$firewand.position.x *= -1
 	if Input.is_action_pressed("right"):
 		target_speed +=  1
 		$witch_sprite.flip_h = false
+		if sign($firewand.position.x) == -1:
+			$firewand.position.x *= -1
 		
 		
 	target_speed *= WALK_SPEED
@@ -91,6 +97,7 @@ func _physics_process(delta):
 		if !$witch_sprite.flip_h:
 			linear_vel = Vector2(500, 0)
 			dashing = true
+			GRAVITY_VEC = Vector2(0, 450)
 			$sound_blink.play()
 		else:
 			linear_vel = Vector2(-500, 0)
@@ -104,15 +111,17 @@ func _physics_process(delta):
 		dashing = false
 		linear_vel = Vector2(0, 0)
 		dash_acc = 0
+		GRAVITY_VEC = Vector2(0, 900)
 			
 	# Shooting
 	if Input.is_action_just_pressed("fire"):
-		var bullet = preload("res://Fireball.tscn").instance()
-		bullet.position = $witch_sprite/firewand.global_position #use node for shoot position
-		bullet.linear_velocity = Vector2(witch_sprite.scale.x * BULLET_VELOCITY, 0)
-		bullet.add_collision_exception_with(self) # don't want player to collide with bullet
-		$witch_sprite/firewand.add_child(bullet) #don't want bullet to move with me, so add it as child of parent
+		var fireball = FIREBALL.instance()
+		if sign($firewand.position.x) == 1:
+			fireball.set_fireball_direction(1)
+		else:
+			fireball.set_fireball_direction(-1)	
+		get_parent().add_child(fireball)
+		fireball.position = $firewand.global_position #use node for shoot position
 		$sound_shoot.play()
-		shoot_time = 0
 		
 	### ANIMATION ###
