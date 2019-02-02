@@ -43,3 +43,9 @@ volume_db = -20.0
 show_behind_parent = true
 position = Vector2( 11.5177, 0.321722 )
 
+[node name="transform" type="Particles2D" parent="."]
+
+[node name="dash" type="Particles2D" parent="."]
+
+[node name="walking dust" type="Particles2D" parent="."]
+
