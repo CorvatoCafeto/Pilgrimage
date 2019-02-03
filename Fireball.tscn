@@ -5,7 +5,7 @@
 
 [sub_resource type="CircleShape2D" id=1]
 
-radius = 4.31326
+radius = 3.53325
 
 [node name="Fireball" type="Area2D"]
 script = ExtResource( 1 )

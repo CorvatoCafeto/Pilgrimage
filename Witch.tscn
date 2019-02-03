@@ -12,6 +12,7 @@
 extents = Vector2( 6.09299, 7.49766 )
 
 [node name="wbody" type="KinematicBody2D"]
+position = Vector2( -0.150097, 0.0375242 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -41,11 +42,14 @@ volume_db = -20.0
 
 [node name="firewand" type="Position2D" parent="."]
 show_behind_parent = true
-position = Vector2( 11.5177, 0.321722 )
+position = Vector2( 16.0957, -0.015996 )
 
 [node name="transform" type="Particles2D" parent="."]
+visible = false
 
 [node name="dash" type="Particles2D" parent="."]
+visible = false
 
 [node name="walking dust" type="Particles2D" parent="."]
+visible = false
 

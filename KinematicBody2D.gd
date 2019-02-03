@@ -75,46 +75,51 @@ func _physics_process(delta):
 	if on_floor and Input.is_action_just_pressed("up"):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
-	elif !has_double_jumped and Input.is_action_just_pressed("up"):
+	elif Upgrades.BROOM and !has_double_jumped and Input.is_action_just_pressed("up"):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
 		has_double_jumped = true
 		
 	# Transforming
-	if !is_cat and Input.is_action_just_pressed("down"):
-		$witch_sprite.texture = cat_form
-		is_cat = true
-		$CollisionShape2D.scale.y = 0.5
-		$sound_cat.play()
-	elif is_cat and Input.is_action_just_pressed("down"):
-		$witch_sprite.texture = human_form
-		$CollisionShape2D.scale.y = 1
-		is_cat = false
-		$sound_cat.play()
+	if Upgrades.CAT:
+		if !is_cat and Input.is_action_just_pressed("down"):
+			$witch_sprite.texture = cat_form
+			is_cat = true
+			$CollisionShape2D.scale.y = 0.5
+			$CollisionShape2D.scale.x = 0.5
+			$sound_cat.play()
+		elif is_cat and Input.is_action_just_pressed("down"):
+			$witch_sprite.texture = human_form
+			$CollisionShape2D.scale.y = 1
+			$CollisionShape2D.scale.x = 1
+			is_cat = false
+			$sound_cat.play()
 		
 	# Blinking
-	if Input.is_action_just_pressed("blink"):
-		if !$witch_sprite.flip_h:
-			linear_vel = Vector2(500, 0)
-			dashing = true
-			GRAVITY_VEC = Vector2(0, 450)
-			$sound_blink.play()
-		else:
-			linear_vel = Vector2(-500, 0)
-			dashing = true
-			$sound_blink.play()
+	if Upgrades.TUNIC:
+		if Input.is_action_just_pressed("blink"):
+			if !$witch_sprite.flip_h:
+				linear_vel = Vector2(500, 0)
+				dashing = true
+				GRAVITY_VEC = Vector2(0, 450)
+				$sound_blink.play()
+			else:
+				linear_vel = Vector2(-500, 0)
+				dashing = true
+				$sound_blink.play()
 	
-	if dashing:
-		dash_acc += delta
-	#if we dashed for longer than our DASH_TIME we stop and reset our accumulator
-	if dash_acc >= DASH_TIME:    
-		dashing = false
-		linear_vel = Vector2(0, 0)
-		dash_acc = 0
-		GRAVITY_VEC = Vector2(0, 900)
+		if dashing:
+			dash_acc += delta
+		#if we dashed for longer than our DASH_TIME we stop and reset our accumulator
+		if dash_acc >= DASH_TIME:    
+			dashing = false
+			linear_vel = Vector2(0, 0)
+			dash_acc = 0
+			GRAVITY_VEC = Vector2(0, 900)
 			
 	# Shooting
-	if Input.is_action_just_pressed("fire"):
+	#if Upgrades.WAND:
+	if !is_cat and Input.is_action_just_pressed("fire"):
 		var fireball = FIREBALL.instance()
 		if sign($firewand.position.x) == 1:
 			fireball.set_fireball_direction(1)

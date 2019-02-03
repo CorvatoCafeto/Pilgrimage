@@ -9,7 +9,11 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("blink") or Input.is_action_just_pressed("fire"):
-		get_tree().change_scene("res://Main.tscn")
+#func _process(delta):
+#	pass
 
+func _on_Node2D_body_entered(body):
+	if "wbody" in body.name:
+		Upgrades.CAT = true
+	queue_free()
+	pass # Replace with function body.

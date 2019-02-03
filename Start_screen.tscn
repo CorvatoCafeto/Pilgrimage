@@ -12,11 +12,20 @@ margin_bottom = 40.0
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 4.54544
-margin_top = 44.7551
-margin_right = 78.5454
-margin_bottom = 58.7551
+margin_left = 4.97472
+margin_top = 52.2675
+margin_right = 78.9747
+margin_bottom = 66.2675
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 text = "Press z or x"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 8.35466
+margin_top = 15.9967
+margin_right = 75.3547
+margin_bottom = 29.9967
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = "Pilgrimage"
 
