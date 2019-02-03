@@ -1,15 +1,70 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://witch1616.png" type="Texture" id=2]
-[ext_resource path="res://jump.wav" type="AudioStream" id=3]
-[ext_resource path="res://cat.wav" type="AudioStream" id=4]
-[ext_resource path="res://fireball.wav" type="AudioStream" id=5]
-[ext_resource path="res://blink.wav" type="AudioStream" id=6]
+[ext_resource path="res://witch_first_idle1.png" type="Texture" id=2]
+[ext_resource path="res://witch_first_idle2.png" type="Texture" id=3]
+[ext_resource path="res://witch_first_idle3.png" type="Texture" id=4]
+[ext_resource path="res://witch_first_idle4.png" type="Texture" id=5]
+[ext_resource path="res://witch_first_walking1.png" type="Texture" id=6]
+[ext_resource path="res://witch_first_walking2.png" type="Texture" id=7]
+[ext_resource path="res://witch_first_walking3.png" type="Texture" id=8]
+[ext_resource path="res://witch_first_walking4.png" type="Texture" id=9]
+[ext_resource path="res://witch_first_walking5.png" type="Texture" id=10]
+[ext_resource path="res://witch_first_jumping.png" type="Texture" id=11]
+[ext_resource path="res://witch_first_falling.png" type="Texture" id=12]
+[ext_resource path="res://cat02.png" type="Texture" id=13]
+[ext_resource path="res://jump.wav" type="AudioStream" id=14]
+[ext_resource path="res://cat.wav" type="AudioStream" id=15]
+[ext_resource path="res://fireball.wav" type="AudioStream" id=16]
+[ext_resource path="res://blink.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 extents = Vector2( 6.09299, 7.49766 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Walking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "Jumping",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "Falling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Falling_cat",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Idle_cat",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Running_cat",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Jumping_cat",
+"speed": 5.0
+} ]
 
 [node name="wbody" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -21,25 +76,27 @@ shape = SubResource( 1 )
 show_behind_parent = true
 position = Vector2( 5, 0 )
 
-[node name="witch_sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="witch_sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "Idle"
+playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
 [node name="sound_jump" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 14 )
 volume_db = -20.0
 
 [node name="sound_cat" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 15 )
 
 [node name="sound_shoot" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 16 )
 volume_db = -10.0
 
 [node name="sound_blink" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 17 )
 volume_db = -20.0
 
 [node name="transform" type="Particles2D" parent="."]

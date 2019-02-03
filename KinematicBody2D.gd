@@ -49,6 +49,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		onair_time = 0
 		has_double_jumped = false
+		#$witch_sprite.animation = "Idle"
 
 	on_floor = onair_time < MIN_ONAIR_TIME
 
@@ -58,12 +59,14 @@ func _physics_process(delta):
 	var target_speed = 0
 	if Input.is_action_pressed("left"):
 		target_speed += -1
-		$witch_sprite.flip_h = true
+		#$witch_sprite.animation = "Walking"
+		#$witch_sprite.flip_h = true
 		if sign($firewand.position.x) == 1:
 			$firewand.position.x *= -1
 	if Input.is_action_pressed("right"):
 		target_speed +=  1
-		$witch_sprite.flip_h = false
+		#$witch_sprite.animation = "Walking"		
+		#$witch_sprite.flip_h = false
 		if sign($firewand.position.x) == -1:
 			$firewand.position.x *= -1
 		
@@ -75,6 +78,7 @@ func _physics_process(delta):
 	if on_floor and Input.is_action_just_pressed("up"):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
+		#$witch_sprite.animation = "Jumping"
 	elif Upgrades.BROOM and !has_double_jumped and Input.is_action_just_pressed("up"):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
@@ -83,13 +87,13 @@ func _physics_process(delta):
 	# Transforming
 	if Upgrades.CAT:
 		if !is_cat and Input.is_action_just_pressed("down"):
-			$witch_sprite.texture = cat_form
+			#$witch_sprite.texture = cat_form
 			is_cat = true
 			$CollisionShape2D.scale.y = 0.5
 			$CollisionShape2D.scale.x = 0.5
 			$sound_cat.play()
 		elif is_cat and Input.is_action_just_pressed("down"):
-			$witch_sprite.texture = human_form
+			#$witch_sprite.texture = human_form
 			$CollisionShape2D.scale.y = 1
 			$CollisionShape2D.scale.x = 1
 			is_cat = false
@@ -130,3 +134,43 @@ func _physics_process(delta):
 		$sound_shoot.play()
 		
 	### ANIMATION ###
+	var new_anim = "Idle"
+	if is_cat:
+		new_anim = "Idle_cat"
+
+	if on_floor:
+		if linear_vel.x < -SIDING_CHANGE_SPEED:
+			witch_sprite.scale.x = -1
+			new_anim = "Walking"
+			if is_cat:
+				new_anim = "Running_cat"
+
+		if linear_vel.x > SIDING_CHANGE_SPEED:
+			witch_sprite.scale.x = 1
+			new_anim = "Walking"
+			if is_cat:
+				new_anim = "Running_cat"
+	else:
+		# We want the character to immediately change facing side when the player
+		# tries to change direction, during air control.
+		# This allows for example the player to shoot quickly left then right.
+		if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
+			witch_sprite.scale.x = -1
+		if Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
+			witch_sprite.scale.x = 1
+
+		if linear_vel.y < 0:
+			new_anim = "Jumping"
+			if is_cat:
+				new_anim = "Jumping_cat"
+		else:
+			new_anim = "Falling"
+			if is_cat:
+				new_anim = "Falling_cat"
+
+	#if shoot_time < SHOOT_TIME_SHOW_WEAPON:
+		#new_anim += "_weapon"
+
+	if new_anim != anim:
+		anim = new_anim
+		$witch_sprite.play(anim)
