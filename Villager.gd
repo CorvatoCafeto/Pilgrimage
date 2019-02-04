@@ -21,6 +21,10 @@ func dead():
 	#Shrink collision
 	#$Collision.scale.y = 0
 	$AudioStreamPlayer.play()
+	if Upgrades.VENGANCE > 0:
+		Upgrades.VENGANCE -= 1
+	elif Upgrades.VENGANCE == 0:
+		$Timer.start()			
 	
 func _physics_process(delta):
 	if !is_dead:		
@@ -40,3 +44,6 @@ func _physics_process(delta):
 		if $RayCast2D.is_colliding() == false:
 			direction = direction * -1
 			$RayCast2D.position.x *= -1
+
+func _on_Timer_timeout():
+	get_tree().change_scene("res://Ending.tscn")

@@ -1,13 +1,21 @@
--Add RayCast2D to check celling when in cat form to avoid returning to human form
--Improve Start Animation
--Design world
--Fix Fireball bug
--Villagers animations
--Particles for dash trasnformation, walking dust and firebal
--Animate Outro
--Make villagers run scared
+-fix dash bug
 -Make destructible wall
+
+-Add RayCast2D to check celling when in cat form to avoid returning to human form
+-Add getting up animation
+-Add details to world
+-Fix Fireball bug
+-Particles for dash trasnformation, walking dust and firebal
+-upgrade Outro
+-Make villagers run scared
+
 -Export project
 -Make page
--Make dead Villagers stay in blood
+
+
 -add some detail to the parallax bg
+-hacer sprite de pozo
+-Villagers animations
+-Make dead Villagers stay in blood
+
+

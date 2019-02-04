@@ -5,6 +5,8 @@ var BROOM = false
 var TUNIC = false
 var WAND = false
 
+var VENGANCE = 9
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
