@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Start_screen.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://villager_walking5.png" type="Texture" id=20]
 [ext_resource path="res://little_girl.png" type="Texture" id=21]
 [ext_resource path="res://little_girl_FALLING.png" type="Texture" id=22]
+[ext_resource path="res://well.png" type="Texture" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -178,18 +179,20 @@ autoplay = true
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 8, 8 )
 format = 1
-tile_data = PoolIntArray( 458756, 4, 0, 458760, 9, 0, 524292, 3, 3, 524296, 3, 3, 524297, 8, 0, 655359, 3, 0, 589824, 3, 1, 589825, 3, 327681, 589826, 3, 1, 589827, 3, 1, 589828, 3, 2, 589832, 3, 0, 589833, 3, 327681, 589834, 3, 327681, 589835, 3, 2, 720895, 3, 65536, 655360, 3, 65537, 655361, 3, 65537, 655362, 3, 65537, 655363, 3, 65537, 655364, 3, 262144, 655368, 3, 65536, 655369, 3, 65537, 655370, 3, 65537, 655371, 3, 262144, 786431, 3, 131072, 720896, 3, 196609, 720897, 3, 196609, 720898, 3, 131073, 720899, 3, 196609, 720900, 3, 131074, 720904, 3, 131072, 720905, 3, 131073, 720906, 3, 131073, 720907, 3, 131074 )
+tile_data = PoolIntArray( 524291, 4, 0, 524292, 13, 0, 524296, 4, 0, 524297, 8, 0, 655359, 3, 0, 589824, 3, 1, 589825, 3, 327681, 589826, 3, 327681, 589827, 3, 1, 589828, 3, 2, 589832, 3, 0, 589833, 3, 1, 589834, 3, 327681, 589835, 3, 2, 720895, 3, 65536, 655360, 3, 65537, 655361, 3, 65537, 655362, 3, 65537, 655363, 3, 65537, 655364, 3, 65538, 655368, 3, 262146, 655369, 3, 65537, 655370, 3, 65537, 655371, 3, 262144, 786431, 3, 131072, 720896, 3, 196609, 720897, 3, 196609, 720898, 3, 131073, 720899, 3, 196609, 720900, 3, 131074, 720904, 3, 131072, 720905, 3, 196609, 720906, 3, 131073, 720907, 3, 131074 )
 
 [node name="Villager01" type="AnimatedSprite" parent="."]
 position = Vector2( -11.8266, 63.8121 )
 frames = SubResource( 1 )
 animation = "walk"
+frame = 1
 playing = true
 
 [node name="Villager02" type="AnimatedSprite" parent="."]
 position = Vector2( -26.6903, 63.5551 )
 frames = SubResource( 2 )
 animation = "walking"
+frame = 1
 playing = true
 
 [node name="little_girl" type="AnimatedSprite" parent="."]
@@ -203,5 +206,10 @@ anims/Intro = SubResource( 4 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 6.0
 one_shot = true
+
+[node name="well" type="Sprite" parent="."]
+position = Vector2( 51.9316, 65.794 )
+scale = Vector2( 0.637108, 0.881666 )
+texture = ExtResource( 23 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
