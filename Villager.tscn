@@ -1,17 +1,26 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Villager.gd" type="Script" id=1]
 [ext_resource path="res://villager_idle1.png" type="Texture" id=2]
 [ext_resource path="res://villager_idle2.png" type="Texture" id=3]
 [ext_resource path="res://villager_idle3.png" type="Texture" id=4]
 [ext_resource path="res://villager_idle4.png" type="Texture" id=5]
-[ext_resource path="res://villager_dead.png" type="Texture" id=6]
-[ext_resource path="res://villager_walking1.png" type="Texture" id=7]
-[ext_resource path="res://villager_walking2.png" type="Texture" id=8]
-[ext_resource path="res://villager_walking3.png" type="Texture" id=9]
-[ext_resource path="res://villager_walking4.png" type="Texture" id=10]
-[ext_resource path="res://villager_walking5.png" type="Texture" id=11]
-[ext_resource path="res://scream.wav" type="AudioStream" id=12]
+[ext_resource path="res://villager_walking1.png" type="Texture" id=6]
+[ext_resource path="res://villager_walking2.png" type="Texture" id=7]
+[ext_resource path="res://villager_walking3.png" type="Texture" id=8]
+[ext_resource path="res://villager_walking4.png" type="Texture" id=9]
+[ext_resource path="res://villager_walking5.png" type="Texture" id=10]
+[ext_resource path="res://villager_death1.png" type="Texture" id=11]
+[ext_resource path="res://villager_death2.png" type="Texture" id=12]
+[ext_resource path="res://villager_death3.png" type="Texture" id=13]
+[ext_resource path="res://villager_death4.png" type="Texture" id=14]
+[ext_resource path="res://villager_death5.png" type="Texture" id=15]
+[ext_resource path="res://villager_death6.png" type="Texture" id=16]
+[ext_resource path="res://villager_death7.png" type="Texture" id=17]
+[ext_resource path="res://villager_death8.png" type="Texture" id=18]
+[ext_resource path="res://villager_death9.png" type="Texture" id=19]
+[ext_resource path="res://villager_death10.png" type="Texture" id=20]
+[ext_resource path="res://scream.wav" type="AudioStream" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -25,14 +34,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "dead",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Walking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "dead",
 "speed": 5.0
 } ]
 
@@ -54,6 +63,6 @@ animation = "idle"
 frame = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
+stream = ExtResource( 21 )
 volume_db = -20.0
 

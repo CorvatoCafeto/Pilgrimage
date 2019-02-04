@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Start_screen.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
@@ -21,8 +21,9 @@
 [ext_resource path="res://villager_walking4.png" type="Texture" id=19]
 [ext_resource path="res://villager_walking5.png" type="Texture" id=20]
 [ext_resource path="res://little_girl.png" type="Texture" id=21]
+[ext_resource path="res://little_girl_FALLING.png" type="Texture" id=22]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
@@ -41,7 +42,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
@@ -55,18 +56,22 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
 "frames": [ ExtResource( 21 ) ],
 "loop": true,
 "name": "carry",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource_name = "Intro"
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Villager01:position")
@@ -128,6 +133,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [ "walking", "idle" ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("little_girl:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.0108941, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "carry", "falling" ]
+}
 
 [node name="Start_screen" type="Node2D"]
 script = ExtResource( 1 )
@@ -165,25 +182,23 @@ tile_data = PoolIntArray( 458756, 4, 0, 458760, 9, 0, 524292, 3, 3, 524296, 3, 3
 
 [node name="Villager01" type="AnimatedSprite" parent="."]
 position = Vector2( -11.8266, 63.8121 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "walk"
-frame = 3
 playing = true
 
 [node name="Villager02" type="AnimatedSprite" parent="."]
-position = Vector2( -26.7396, 63.5551 )
-frames = SubResource( 5 )
+position = Vector2( -26.6903, 63.5551 )
+frames = SubResource( 2 )
 animation = "walking"
-frame = 3
 playing = true
 
 [node name="little_girl" type="AnimatedSprite" parent="."]
-position = Vector2( -14.4432, 51.1127 )
-frames = SubResource( 4 )
+position = Vector2( -17.5106, 50.4049 )
+frames = SubResource( 3 )
 animation = "carry"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Intro = SubResource( 3 )
+anims/Intro = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 6.0
