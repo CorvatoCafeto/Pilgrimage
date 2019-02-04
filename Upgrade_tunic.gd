@@ -15,5 +15,10 @@ func _ready():
 func _on_Upgrade_tunic_body_entered(body):
 	if "wbody" in body.name:
 		Upgrades.TUNIC = true
-		queue_free()
+	$AudioStreamPlayer.play()
+	$Sprite.visible = false
+	pass # Replace with function body.
+
+func _on_AudioStreamPlayer_finished():
+	queue_free()
 	pass # Replace with function body.

@@ -15,5 +15,10 @@ func _ready():
 func _on_Node2D_body_entered(body):
 	if "wbody" in body.name:
 		Upgrades.CAT = true
+	$AudioStreamPlayer.play()
+	$Sprite.visible = false
+	pass # Replace with function body.
+
+func _on_AudioStreamPlayer_finished():
 	queue_free()
 	pass # Replace with function body.

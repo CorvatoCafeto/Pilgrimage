@@ -61,14 +61,14 @@ func _physics_process(delta):
 		target_speed += -1
 		#$witch_sprite.animation = "Walking"
 		#$witch_sprite.flip_h = true
-		if sign($firewand.position.x) == 1:
-			$firewand.position.x *= -1
+		if sign($witch_sprite/firewand.position.x) == 1:
+			$witch_sprite/firewand.position.x *= -1
 	if Input.is_action_pressed("right"):
 		target_speed +=  1
 		#$witch_sprite.animation = "Walking"		
 		#$witch_sprite.flip_h = false
-		if sign($firewand.position.x) == -1:
-			$firewand.position.x *= -1
+		if sign($witch_sprite/firewand.position.x) == -1:
+			$witch_sprite/firewand.position.x *= -1
 		
 		
 	target_speed *= WALK_SPEED
@@ -125,12 +125,12 @@ func _physics_process(delta):
 	#if Upgrades.WAND:
 	if !is_cat and Input.is_action_just_pressed("fire"):
 		var fireball = FIREBALL.instance()
-		if sign($firewand.position.x) == 1:
+		if sign($witch_sprite/firewand.position.x) == 1:
 			fireball.set_fireball_direction(1)
 		else:
 			fireball.set_fireball_direction(-1)	
 		get_parent().add_child(fireball)
-		fireball.position = $firewand.global_position #use node for shoot position
+		fireball.position = $witch_sprite/firewand.global_position #use node for shoot position
 		$sound_shoot.play()
 		
 	### ANIMATION ###
