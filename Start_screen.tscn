@@ -1,7 +1,133 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Start_screen.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
+[ext_resource path="res://pilgrimage.wav" type="AudioStream" id=3]
+[ext_resource path="res://Tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://villager_idle1.png" type="Texture" id=5]
+[ext_resource path="res://villager_idle2.png" type="Texture" id=6]
+[ext_resource path="res://villager_idle3.png" type="Texture" id=7]
+[ext_resource path="res://villager_idle4.png" type="Texture" id=8]
+[ext_resource path="res://villager_carring1.png" type="Texture" id=9]
+[ext_resource path="res://villager_carring2.png" type="Texture" id=10]
+[ext_resource path="res://villager_carring3.png" type="Texture" id=11]
+[ext_resource path="res://villager_carring4.png" type="Texture" id=12]
+[ext_resource path="res://villager_carring5.png" type="Texture" id=13]
+[ext_resource path="res://villager_throw1.png" type="Texture" id=14]
+[ext_resource path="res://villager_throw2.png" type="Texture" id=15]
+[ext_resource path="res://villager_walking1.png" type="Texture" id=16]
+[ext_resource path="res://villager_walking2.png" type="Texture" id=17]
+[ext_resource path="res://villager_walking3.png" type="Texture" id=18]
+[ext_resource path="res://villager_walking4.png" type="Texture" id=19]
+[ext_resource path="res://villager_walking5.png" type="Texture" id=20]
+[ext_resource path="res://little_girl.png" type="Texture" id=21]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "throwing",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "walking",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "carry",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "Intro"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Villager01:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -11.8266, 63.8121 ), Vector2( -6.8266, 63.8121 ), Vector2( -0.826599, 64.208 ), Vector2( 5.1734, 64.0314 ), Vector2( 11.1074, 63.9441 ), Vector2( 16.3053, 64.01 ), Vector2( 21.3053, 64.01 ), Vector2( 25.1734, 64.142 ), Vector2( 24.6349, 64.0522 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Villager01:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.00835137, 3.5, 3.98335, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "walk", "throwing", "idle", "idle" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("little_girl:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 7.07321e-005, 0.0146995, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10.771, 51.9599 ), Vector2( -19.8802, 49.8582 ), Vector2( -6.91243, 52.1715 ), Vector2( -0.416569, 52.2431 ), Vector2( 5.5114, 52.2485 ), Vector2( 11.4981, 51.9693 ), Vector2( 16.63, 52.0353 ), Vector2( 21.5641, 52.1012 ), Vector2( 25.8384, 52.1672 ), Vector2( 44.7845, 41.1804 ), Vector2( 52.3392, 70.4308 ), Vector2( 51.4355, 90.991 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Villager02:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 7.07321e-005, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -26.7985, 63.5551 ), Vector2( -21.7985, 63.5551 ), Vector2( -16.7985, 63.5551 ), Vector2( -8.67946, 63.9719 ), Vector2( -1.67946, 63.9719 ), Vector2( 3.38651, 63.9719 ), Vector2( 8.38651, 63.9719 ), Vector2( 12.3865, 63.9719 ), Vector2( 11.4763, 64.0616 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Villager02:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.0166567, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "walking", "idle" ]
+}
 
 [node name="Start_screen" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,21 +137,56 @@ margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = 4.97472
-margin_top = 52.2675
-margin_right = 78.9747
-margin_bottom = 66.2675
-custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
-text = "Press z or x"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 8.35466
-margin_top = 15.9967
-margin_right = 75.3547
-margin_bottom = 29.9967
+[node name="Title" type="Label" parent="."]
+margin_left = 8.15074
+margin_top = 7.63652
+margin_right = 75.1508
+margin_bottom = 21.6365
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 text = "Pilgrimage"
 
+[node name="Prompt" type="Label" parent="."]
+margin_left = 5.15822
+margin_top = 24.4852
+margin_right = 79.1582
+margin_bottom = 38.4852
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = "Press z or x"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 458756, 4, 0, 458760, 9, 0, 524292, 3, 3, 524296, 3, 3, 524297, 8, 0, 655359, 3, 0, 589824, 3, 1, 589825, 3, 327681, 589826, 3, 1, 589827, 3, 1, 589828, 3, 2, 589832, 3, 0, 589833, 3, 327681, 589834, 3, 327681, 589835, 3, 2, 720895, 3, 65536, 655360, 3, 65537, 655361, 3, 65537, 655362, 3, 65537, 655363, 3, 65537, 655364, 3, 262144, 655368, 3, 65536, 655369, 3, 65537, 655370, 3, 65537, 655371, 3, 262144, 786431, 3, 131072, 720896, 3, 196609, 720897, 3, 196609, 720898, 3, 131073, 720899, 3, 196609, 720900, 3, 131074, 720904, 3, 131072, 720905, 3, 131073, 720906, 3, 131073, 720907, 3, 131074 )
+
+[node name="Villager01" type="AnimatedSprite" parent="."]
+position = Vector2( -11.8266, 63.8121 )
+frames = SubResource( 2 )
+animation = "walk"
+frame = 3
+playing = true
+
+[node name="Villager02" type="AnimatedSprite" parent="."]
+position = Vector2( -26.7396, 63.5551 )
+frames = SubResource( 5 )
+animation = "walking"
+frame = 3
+playing = true
+
+[node name="little_girl" type="AnimatedSprite" parent="."]
+position = Vector2( -14.4432, 51.1127 )
+frames = SubResource( 4 )
+animation = "carry"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Intro = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

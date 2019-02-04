@@ -25,7 +25,7 @@ func dead():
 func _physics_process(delta):
 	if !is_dead:		
 		velocity.x = SPEED * direction
-		#Animation
+		$AnimatedSprite.play("Walking")
 		if direction == 1:
 			$AnimatedSprite.flip_h = false
 		else:

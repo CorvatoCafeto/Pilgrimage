@@ -16,7 +16,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Pilgrimage"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Start_screen.tscn"
+boot_splash/image="res://background.png"
 config/icon="res://icon.png"
 
 [autoload]

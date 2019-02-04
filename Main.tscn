@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Upgrade_cat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tileset.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://button_down.png" type="Texture" id=5]
 [ext_resource path="res://button_press.png" type="Texture" id=6]
 [ext_resource path="res://Witch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Villager.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -8.6936, -1.94855 )
@@ -49,5 +50,8 @@ position = Vector2( 0.216431, -13.3383 )
 texture = ExtResource( 6 )
 
 [node name="wbody" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1021.14, 761.663 )
+position = Vector2( 1009.74, 398.762 )
+
+[node name="Villager" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1101.04, 760.463 )
 
