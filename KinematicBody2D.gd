@@ -59,14 +59,12 @@ func _physics_process(delta):
 	var target_speed = 0
 	if Input.is_action_pressed("left"):
 		target_speed += -1
-		#$witch_sprite.animation = "Walking"
-		#$witch_sprite.flip_h = true
+		$witch_sprite.flip_h = true
 		if sign($witch_sprite/firewand.position.x) == 1:
 			$witch_sprite/firewand.position.x *= -1
 	if Input.is_action_pressed("right"):
 		target_speed +=  1
-		#$witch_sprite.animation = "Walking"		
-		#$witch_sprite.flip_h = false
+		$witch_sprite.flip_h = false
 		if sign($witch_sprite/firewand.position.x) == -1:
 			$witch_sprite/firewand.position.x *= -1
 		
@@ -78,39 +76,37 @@ func _physics_process(delta):
 	if on_floor and Input.is_action_just_pressed("up"):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
-		#$witch_sprite.animation = "Jumping"
-	elif Upgrades.BROOM and !has_double_jumped and Input.is_action_just_pressed("up"):
+	elif !Upgrades.BROOM and !has_double_jumped and Input.is_action_just_pressed("up"):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
 		has_double_jumped = true
 		
 	# Transforming
-	if Upgrades.CAT:
-		if !is_cat and Input.is_action_just_pressed("down"):
-			#$witch_sprite.texture = cat_form
-			is_cat = true
-			$CollisionShape2D.scale.y = 0.5
-			$CollisionShape2D.scale.x = 0.5
-			$sound_cat.play()
-		elif is_cat and Input.is_action_just_pressed("down"):
-			#$witch_sprite.texture = human_form
-			$CollisionShape2D.scale.y = 1
-			$CollisionShape2D.scale.x = 1
-			is_cat = false
-			$sound_cat.play()
+	#if Upgrades.CAT:
+	if !is_cat and Input.is_action_just_pressed("down"):
+		is_cat = true
+		$CollisionShape2D.scale.y = 0.5
+		$CollisionShape2D.scale.x = 0.5
+		$sound_cat.play()
+	elif is_cat and Input.is_action_just_pressed("down"):
+		$CollisionShape2D.scale.y = 1
+		$CollisionShape2D.scale.x = 1
+		is_cat = false
+		$sound_cat.play()
 		
 	# Blinking
-	if Upgrades.TUNIC:
-		if Input.is_action_just_pressed("blink"):
-			if !$witch_sprite.flip_h:
-				linear_vel = Vector2(500, 0)
-				dashing = true
-				GRAVITY_VEC = Vector2(0, 450)
-				$sound_blink.play()
-			else:
-				linear_vel = Vector2(-500, 0)
-				dashing = true
-				$sound_blink.play()
+	#if Upgrades.TUNIC:
+	if Input.is_action_just_pressed("blink"):
+		if !$witch_sprite.flip_h:
+			linear_vel = Vector2(500, 0)
+			dashing = true
+			#GRAVITY_VEC = Vector2(0, 450)
+			$sound_blink.play()
+		elif $witch_sprite.flip_h:
+			linear_vel = Vector2(-500, 0)
+			dashing = true
+			#GRAVITY_VEC = Vector2(0, 450)
+			$sound_blink.play()
 	
 		if dashing:
 			dash_acc += delta
@@ -140,13 +136,13 @@ func _physics_process(delta):
 
 	if on_floor:
 		if linear_vel.x < -SIDING_CHANGE_SPEED:
-			witch_sprite.scale.x = -1
+			#witch_sprite.scale.x = -1
 			new_anim = "Walking"
 			if is_cat:
 				new_anim = "Running_cat"
 
 		if linear_vel.x > SIDING_CHANGE_SPEED:
-			witch_sprite.scale.x = 1
+			#witch_sprite.scale.x = 1
 			new_anim = "Walking"
 			if is_cat:
 				new_anim = "Running_cat"
@@ -154,10 +150,12 @@ func _physics_process(delta):
 		# We want the character to immediately change facing side when the player
 		# tries to change direction, during air control.
 		# This allows for example the player to shoot quickly left then right.
-		if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
-			witch_sprite.scale.x = -1
-		if Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
-			witch_sprite.scale.x = 1
+		#if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
+			#witch_sprite.scale.x = -1
+			#$witch_sprite.flip_h = true
+		#if Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
+		#	witch_sprite.scale.x = 1
+		#	$witch_sprite.flip_h = false
 
 		if linear_vel.y < 0:
 			new_anim = "Jumping"
@@ -167,9 +165,6 @@ func _physics_process(delta):
 			new_anim = "Falling"
 			if is_cat:
 				new_anim = "Falling_cat"
-
-	#if shoot_time < SHOOT_TIME_SHOW_WEAPON:
-		#new_anim += "_weapon"
 
 	if new_anim != anim:
 		anim = new_anim

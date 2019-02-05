@@ -84,6 +84,7 @@ shape = SubResource( 1 )
 [node name="witch_sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "Idle"
+frame = 2
 playing = true
 
 [node name="firewand" type="Position2D" parent="witch_sprite"]
