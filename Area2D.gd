@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -11,11 +11,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-var vengance = preload("res://revenge.wav")
-
-func _on_change_music_body_entered(body):
-		if "wbody" in body.name:
-			$AudioStreamPlayer.stream = vengance
-			$AudioStreamPlayer.play()
-			$change_music/CollisionShape2D.free()

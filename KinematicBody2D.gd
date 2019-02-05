@@ -33,6 +33,7 @@ var dashing = false
 const DASH_TIME = 1 #dash for one second
 var dash_acc = 0 #here we count up the time while dashing until we reach DASH_TIME
 
+
 func _physics_process(delta):
 	#increment counters
 
@@ -60,13 +61,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("left"):
 		target_speed += -1
 		$witch_sprite.flip_h = true
-		if sign($witch_sprite/firewand.position.x) == 1:
-			$witch_sprite/firewand.position.x *= -1
+		if sign($Position2D.position.x) == 1:
+			$Position2D.position.x *= -1
 	if Input.is_action_pressed("right"):
 		target_speed +=  1
 		$witch_sprite.flip_h = false
-		if sign($witch_sprite/firewand.position.x) == -1:
-			$witch_sprite/firewand.position.x *= -1
+		if sign($Position2D.position.x) == -1:
+			$Position2D.position.x *= -1
 		
 		
 	target_speed *= WALK_SPEED
@@ -76,58 +77,59 @@ func _physics_process(delta):
 	if on_floor and Input.is_action_just_pressed("up"):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
-	elif !Upgrades.BROOM and !has_double_jumped and Input.is_action_just_pressed("up"):
+	elif Upgrades.BROOM and !has_double_jumped and Input.is_action_just_pressed("up"):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
 		has_double_jumped = true
 		
 	# Transforming
-	#if Upgrades.CAT:
-	if !is_cat and Input.is_action_just_pressed("down"):
-		is_cat = true
-		$CollisionShape2D.scale.y = 0.5
-		$CollisionShape2D.scale.x = 0.5
-		$sound_cat.play()
-	elif is_cat and Input.is_action_just_pressed("down"):
-		$CollisionShape2D.scale.y = 1
-		$CollisionShape2D.scale.x = 1
-		is_cat = false
-		$sound_cat.play()
+	if Upgrades.CAT:
+		if !is_cat and Input.is_action_just_pressed("down"):
+			is_cat = true
+			$CollisionShape2D.scale.y = 0.5
+			$CollisionShape2D.scale.x = 0.5
+			$sound_cat.play()
+		elif is_cat and Input.is_action_just_pressed("down"):
+			$CollisionShape2D.scale.y = 1
+			$CollisionShape2D.scale.x = 1
+			is_cat = false
+			$sound_cat.play()
 		
 	# Blinking
-	#if Upgrades.TUNIC:
-	if Input.is_action_just_pressed("blink"):
-		if !$witch_sprite.flip_h:
-			linear_vel = Vector2(500, 0)
-			dashing = true
-			#GRAVITY_VEC = Vector2(0, 450)
-			$sound_blink.play()
-		elif $witch_sprite.flip_h:
-			linear_vel = Vector2(-500, 0)
-			dashing = true
-			#GRAVITY_VEC = Vector2(0, 450)
-			$sound_blink.play()
-	
-		if dashing:
-			dash_acc += delta
-		#if we dashed for longer than our DASH_TIME we stop and reset our accumulator
-		if dash_acc >= DASH_TIME:    
-			dashing = false
-			linear_vel = Vector2(0, 0)
-			dash_acc = 0
-			GRAVITY_VEC = Vector2(0, 900)
+	if Upgrades.TUNIC:
+		if Input.is_action_just_pressed("blink"):
+			if !$witch_sprite.flip_h:
+				linear_vel = Vector2(500, 0)
+				dashing = true
+				#GRAVITY_VEC = Vector2(0, 450)
+				$sound_blink.play()
+			elif $witch_sprite.flip_h:
+				linear_vel = Vector2(-500, 0)
+				dashing = true
+				#GRAVITY_VEC = Vector2(0, 450)
+				$sound_blink.play()
+		
+			if dashing:
+				dash_acc += delta
+			#if we dashed for longer than our DASH_TIME we stop and reset our accumulator
+			if dash_acc >= DASH_TIME:    
+				dashing = false
+				linear_vel = Vector2(0, 0)
+				dash_acc = 0
+				GRAVITY_VEC = Vector2(0, 900)
 			
 	# Shooting
-	#if Upgrades.WAND:
-	if !is_cat and Input.is_action_just_pressed("fire"):
-		var fireball = FIREBALL.instance()
-		if sign($witch_sprite/firewand.position.x) == 1:
-			fireball.set_fireball_direction(1)
-		else:
-			fireball.set_fireball_direction(-1)	
-		get_parent().add_child(fireball)
-		fireball.position = $witch_sprite/firewand.global_position #use node for shoot position
-		$sound_shoot.play()
+	if Upgrades.WAND:
+		if !is_cat and Input.is_action_just_pressed("fire"):
+			
+			var fireball = FIREBALL.instance()
+			if sign($Position2D.position.x) == 1:
+				fireball.set_fireball_direction(1)
+			else:
+				fireball.set_fireball_direction(-1)	
+			get_parent().add_child(fireball)
+			fireball.global_position = $Position2D.global_position #use node for shoot position
+			$sound_shoot.play()
 		
 	### ANIMATION ###
 	var new_anim = "Idle"
@@ -151,7 +153,7 @@ func _physics_process(delta):
 		# tries to change direction, during air control.
 		# This allows for example the player to shoot quickly left then right.
 		#if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
-			#witch_sprite.scale.x = -1
+		#	witch_sprite.scale.x = -1
 			#$witch_sprite.flip_h = true
 		#if Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
 		#	witch_sprite.scale.x = 1

@@ -7,6 +7,7 @@ var direction = 1
 func _physics_process(delta):
 	velocity.x = SPEED * delta * direction
 	translate(velocity)
+	$Sprite.play("flying")
 	
 func set_fireball_direction(dir):
 	direction = dir
@@ -19,4 +20,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Fireball_body_entered(body):
 	if "Villager" in body.name:
 		body.dead()
-		queue_free()
+	if "firewall" in body.name:
+		body.free()
+	#if "wbody" in body.name:
+	#	return
+	queue_free()

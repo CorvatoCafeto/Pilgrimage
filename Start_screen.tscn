@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Start_screen.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
@@ -8,21 +8,26 @@
 [ext_resource path="res://villager_idle2.png" type="Texture" id=6]
 [ext_resource path="res://villager_idle3.png" type="Texture" id=7]
 [ext_resource path="res://villager_idle4.png" type="Texture" id=8]
-[ext_resource path="res://villager_carring1.png" type="Texture" id=9]
-[ext_resource path="res://villager_carring2.png" type="Texture" id=10]
-[ext_resource path="res://villager_carring3.png" type="Texture" id=11]
-[ext_resource path="res://villager_carring4.png" type="Texture" id=12]
-[ext_resource path="res://villager_carring5.png" type="Texture" id=13]
-[ext_resource path="res://villager_throw1.png" type="Texture" id=14]
-[ext_resource path="res://villager_throw2.png" type="Texture" id=15]
+[ext_resource path="res://villager_throw1.png" type="Texture" id=9]
+[ext_resource path="res://villager_throw2.png" type="Texture" id=10]
+[ext_resource path="res://villager_carring1.png" type="Texture" id=11]
+[ext_resource path="res://villager_carring2.png" type="Texture" id=12]
+[ext_resource path="res://villager_carring3.png" type="Texture" id=13]
+[ext_resource path="res://villager_carring4.png" type="Texture" id=14]
+[ext_resource path="res://villager_carring5.png" type="Texture" id=15]
 [ext_resource path="res://villager_walking1.png" type="Texture" id=16]
 [ext_resource path="res://villager_walking2.png" type="Texture" id=17]
 [ext_resource path="res://villager_walking3.png" type="Texture" id=18]
 [ext_resource path="res://villager_walking4.png" type="Texture" id=19]
 [ext_resource path="res://villager_walking5.png" type="Texture" id=20]
-[ext_resource path="res://little_girl.png" type="Texture" id=21]
-[ext_resource path="res://little_girl_FALLING.png" type="Texture" id=22]
+[ext_resource path="res://little_girl_FALLING.png" type="Texture" id=21]
+[ext_resource path="res://little_girl.png" type="Texture" id=22]
 [ext_resource path="res://well.png" type="Texture" id=23]
+[ext_resource path="res://New Project (2).png" type="Texture" id=24]
+[ext_resource path="res://button_press.png" type="Texture" id=25]
+[ext_resource path="res://button_z.png" type="Texture" id=26]
+[ext_resource path="res://button_x.png" type="Texture" id=27]
+[ext_resource path="res://button_or.png" type="Texture" id=28]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -32,14 +37,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "throwing",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "walk",
 "speed": 5.0
 } ]
 
@@ -62,12 +67,12 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 21 ) ],
 "loop": true,
-"name": "carry",
+"name": "falling",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
-"name": "falling",
+"name": "carry",
 "speed": 5.0
 } ]
 
@@ -155,22 +160,6 @@ margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 2 )
 
-[node name="Title" type="Label" parent="."]
-margin_left = 8.15074
-margin_top = 7.63652
-margin_right = 75.1508
-margin_bottom = 21.6365
-custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
-text = "Pilgrimage"
-
-[node name="Prompt" type="Label" parent="."]
-margin_left = 5.15822
-margin_top = 24.4852
-margin_right = 79.1582
-margin_bottom = 38.4852
-custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
-text = "Press z or x"
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -15.0
@@ -186,12 +175,14 @@ tile_data = PoolIntArray( 524291, 4, 0, 524292, 13, 0, 524296, 4, 0, 524297, 8, 
 position = Vector2( -11.8266, 63.8121 )
 frames = SubResource( 1 )
 animation = "walk"
+frame = 1
 playing = true
 
 [node name="Villager02" type="AnimatedSprite" parent="."]
 position = Vector2( -26.6903, 63.5551 )
 frames = SubResource( 2 )
 animation = "walking"
+frame = 1
 playing = true
 
 [node name="little_girl" type="AnimatedSprite" parent="."]
@@ -210,5 +201,29 @@ one_shot = true
 position = Vector2( 51.9316, 65.794 )
 scale = Vector2( 0.637108, 0.881666 )
 texture = ExtResource( 23 )
+
+[node name="Title2" type="Sprite" parent="."]
+position = Vector2( 41.725, 13.8527 )
+texture = ExtResource( 24 )
+
+[node name="Prompt" type="Sprite" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Prompt"]
+position = Vector2( 21.29, 35.1245 )
+texture = ExtResource( 25 )
+
+[node name="z" type="Sprite" parent="Prompt"]
+position = Vector2( 39.598, 35.2919 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 26 )
+
+[node name="x" type="Sprite" parent="Prompt"]
+position = Vector2( 63.6871, 35.2051 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 27 )
+
+[node name="or" type="Sprite" parent="Prompt"]
+position = Vector2( 51.5049, 34.8708 )
+texture = ExtResource( 28 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
