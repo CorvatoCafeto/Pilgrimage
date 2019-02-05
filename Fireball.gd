@@ -22,6 +22,4 @@ func _on_Fireball_body_entered(body):
 		body.dead()
 	if "firewall" in body.name:
 		body.free()
-	#if "wbody" in body.name:
-	#	return
 	queue_free()

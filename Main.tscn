@@ -122,7 +122,7 @@ position = Vector2( 1339.71, 404.66 )
 texture = ExtResource( 10 )
 
 [node name="wbody" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1012.43, 379.018 )
+position = Vector2( 1011.76, 373.139 )
 
 [node name="well" type="Sprite" parent="."]
 position = Vector2( 1011.88, 352.305 )
