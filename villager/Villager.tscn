@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://villager/Villager.gd" type="Script" id=1]
+[ext_resource path="res://villager/villager.gd" type="Script" id=1]
 [ext_resource path="res://villager/villager_idle1.png" type="Texture" id=2]
 [ext_resource path="res://villager/villager_idle2.png" type="Texture" id=3]
 [ext_resource path="res://villager/villager_idle3.png" type="Texture" id=4]

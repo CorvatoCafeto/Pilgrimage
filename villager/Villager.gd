@@ -46,4 +46,6 @@ func _physics_process(_delta):
 			$RayCast2D.position.x *= -1
 
 func _on_Timer_timeout():
-	get_tree().change_scene("res://narrative/Ending.tscn")
+	if get_tree().change_scene("res://narrative/Ending.tscn") != OK:
+		print ("An unexpected error occured when trying to switch to the Main scene")
+	

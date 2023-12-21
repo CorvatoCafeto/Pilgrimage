@@ -15,13 +15,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Pilgrimage"
-run/main_scene="res://interface/Start_screen.tscn"
+run/main_scene="res://interface/start_screen.tscn"
 boot_splash/image="res://assets_shared/background.png"
 config/icon="res://interface/icon.png"
 
 [autoload]
 
-Upgrades="*res://upgrades/Upgrades.gd"
+Upgrades="*res://upgrades/upgrades.gd"
 
 [display]
 

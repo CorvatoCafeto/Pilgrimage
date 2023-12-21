@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://upgrades/Upgrade_broom.gd" type="Script" id=1]
+[ext_resource path="res://upgrades/upgrade_broom.gd" type="Script" id=1]
 [ext_resource path="res://upgrades/upgrade_broom.png" type="Texture" id=2]
 [ext_resource path="res://upgrades/powerup.wav" type="AudioStream" id=3]
 
