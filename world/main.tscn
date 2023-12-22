@@ -16,7 +16,7 @@
 [ext_resource path="res://world/Arboldefinitivo.png" type="Texture" id=14]
 [ext_resource path="res://interface/letters_v.png" type="Texture" id=15]
 [ext_resource path="res://interface/lettters_all.png" type="Texture" id=16]
-[ext_resource path="res://witch/Witch.tscn" type="PackedScene" id=17]
+[ext_resource path="res://witch/witch.tscn" type="PackedScene" id=17]
 [ext_resource path="res://upgrades/upgrade_cat.tscn" type="PackedScene" id=18]
 [ext_resource path="res://villager/villager.tscn" type="PackedScene" id=19]
 [ext_resource path="res://upgrades/upgrade_wand.tscn" type="PackedScene" id=20]
@@ -118,7 +118,7 @@ texture = ExtResource( 4 )
 [node name="wbody" parent="." instance=ExtResource( 17 )]
 position = Vector2( 1011.76, 373.139 )
 
-[node name="well" type="Sprite" parent="."]
+[node name="Well" type="Sprite" parent="."]
 position = Vector2( 1011.88, 352.305 )
 scale = Vector2( 0.615274, 1 )
 texture = ExtResource( 9 )
@@ -155,62 +155,62 @@ position = Vector2( 685.309, 299.821 )
 [node name="Villager10" parent="Villagers" instance=ExtResource( 19 )]
 position = Vector2( 669.4, 365.811 )
 
-[node name="change_music" type="Area2D" parent="."]
+[node name="ChangeMusic" type="Area2D" parent="."]
 position = Vector2( 1221.49, 442.099 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="change_music"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeMusic"]
 position = Vector2( 0.548096, 0.135223 )
 shape = SubResource( 1 )
 
-[node name="firewall" type="StaticBody2D" parent="."]
+[node name="Firewall" type="StaticBody2D" parent="."]
 position = Vector2( 1235.99, 446.103 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="firewall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Firewall"]
 position = Vector2( 4.60559, -1.6748 )
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="firewall"]
+[node name="Sprite" type="Sprite" parent="Firewall"]
 position = Vector2( 4.08228, -2.09344 )
 texture = ExtResource( 8 )
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="messages" type="Node" parent="."]
+[node name="Messages" type="Node" parent="."]
 
-[node name="kill" type="Sprite" parent="messages"]
+[node name="Kill" type="Sprite" parent="Messages"]
 position = Vector2( 981.098, 304.09 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
-[node name="v" type="Sprite" parent="messages"]
-position = Vector2( 1201.06, 405.019 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 15 )
-
-[node name="them" type="Sprite" parent="messages"]
+[node name="Them" type="Sprite" parent="Messages"]
 position = Vector2( 1003.86, 305.375 )
 texture = ExtResource( 6 )
 
-[node name="all" type="Sprite" parent="messages"]
+[node name="All" type="Sprite" parent="Messages"]
 position = Vector2( 1027.59, 304.604 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 16 )
 
-[node name="TREES" type="Node" parent="."]
+[node name="Vengeance" type="Sprite" parent="Messages"]
+position = Vector2( 1201.06, 405.019 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 15 )
 
-[node name="Sprite" type="Sprite" parent="TREES"]
+[node name="Trees" type="Node" parent="."]
+
+[node name="Tree01" type="Sprite" parent="Trees"]
 position = Vector2( 885.248, 329.328 )
 scale = Vector2( 0.0844626, 0.10879 )
 texture = ExtResource( 14 )
 
-[node name="Sprite2" type="Sprite" parent="TREES"]
+[node name="Tree02" type="Sprite" parent="Trees"]
 position = Vector2( 519.62, 373.051 )
 scale = Vector2( 0.0448247, 0.0642838 )
 texture = ExtResource( 14 )
 
-[node name="Sprite3" type="Sprite" parent="TREES"]
+[node name="Tree03" type="Sprite" parent="Trees"]
 position = Vector2( 576.313, 274.277 )
 scale = Vector2( 0.0531651, 0.0743282 )
 texture = ExtResource( 14 )
 
-[connection signal="body_entered" from="change_music" to="." method="_on_change_music_body_entered"]
+[connection signal="body_entered" from="ChangeMusic" to="." method="_on_change_music_body_entered"]

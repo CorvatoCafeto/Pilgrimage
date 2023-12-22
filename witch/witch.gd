@@ -60,12 +60,12 @@ func _physics_process(delta):
 	var target_speed = 0
 	if Input.is_action_pressed("left"):
 		target_speed += -1
-		$witch_sprite.flip_h = true
+		$Sprite.flip_h = true
 		if sign($Position2D.position.x) == 1:
 			$Position2D.position.x *= -1
 	if Input.is_action_pressed("right"):
 		target_speed +=  1
-		$witch_sprite.flip_h = false
+		$Sprite.flip_h = false
 		if sign($Position2D.position.x) == -1:
 			$Position2D.position.x *= -1
 		
@@ -98,12 +98,12 @@ func _physics_process(delta):
 	# Blinking
 	if Upgrades.TUNIC:
 		if Input.is_action_just_pressed("blink"):
-			if !$witch_sprite.flip_h:
+			if !$Sprite.flip_h:
 				linear_vel = Vector2(500, 0)
 				dashing = true
 				#GRAVITY_VEC = Vector2(0, 450)
 				$sound_blink.play()
-			elif $witch_sprite.flip_h:
+			elif $Sprite.flip_h:
 				linear_vel = Vector2(-500, 0)
 				dashing = true
 				#GRAVITY_VEC = Vector2(0, 450)
@@ -170,4 +170,4 @@ func _physics_process(delta):
 
 	if new_anim != anim:
 		anim = new_anim
-		$witch_sprite.play(anim)
+		$Sprite.play(anim)

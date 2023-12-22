@@ -8,9 +8,6 @@ var velocity = Vector2()
 var direction = 1
 var is_dead = false
 
-func _ready():
-	pass 
-	
 func dead():
 	is_dead = true
 	velocity = Vector2(0,0)
@@ -24,7 +21,7 @@ func dead():
 	if Upgrades.VENGANCE > 0:
 		Upgrades.VENGANCE -= 1
 	elif Upgrades.VENGANCE == 0:
-		$Timer.start()			
+		$Timer.start()
 	
 func _physics_process(_delta):
 	if !is_dead:		
@@ -48,4 +45,3 @@ func _physics_process(_delta):
 func _on_Timer_timeout():
 	if get_tree().change_scene("res://narrative/Ending.tscn") != OK:
 		print ("An unexpected error occured when trying to switch to the Main scene")
-	
