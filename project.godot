@@ -21,7 +21,7 @@ config/icon="res://interface/icon.png"
 
 [autoload]
 
-Upgrades="*res://upgrades/upgrades.gd"
+Upgrades="*res://autoloads/upgrades.gd"
 
 [display]
 
