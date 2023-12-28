@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-var GRAVITY_VEC = Vector2(0, 900)
+onready var witch_sprite = $Sprite
+
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
 const MIN_ONAIR_TIME = 0.1
@@ -9,30 +10,19 @@ const JUMP_SPEED = 200
 const SIDING_CHANGE_SPEED = 10
 const BULLET_VELOCITY = 1
 const SHOOT_TIME_SHOW_WEAPON = 0.2
-
 const FIREBALL = preload("res://fireball/Fireball.tscn")
+const DASH_TIME = 1
 
+var GRAVITY_VEC = Vector2(0, 900)
 var linear_vel = Vector2()
 var onair_time = 0 #
 var on_floor = false
 var has_double_jumped = false
 var shoot_time=99999 #time since last shot
-
 var anim=""
-
-var cat_form = preload("res://witch/cat.png")
 var is_cat = false
-var human_form = preload("res://witch/witch1616.png")
-
-
-#cache the sprite here for fast access (we will set scale to flip it often)
-onready var witch_sprite = $witch_sprite
-
-#dash variables
 var dashing = false
-const DASH_TIME = 1 #dash for one second
-var dash_acc = 0 #here we count up the time while dashing until we reach DASH_TIME
-
+var dash_acc = 0
 
 func _physics_process(delta):
 	#increment counters

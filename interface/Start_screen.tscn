@@ -176,14 +176,14 @@ tile_data = PoolIntArray( 524291, 4, 0, 524292, 13, 0, 524296, 4, 0, 524297, 8, 
 position = Vector2( -11.8266, 63.8121 )
 frames = SubResource( 1 )
 animation = "walk"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Villager02" type="AnimatedSprite" parent="."]
 position = Vector2( -25.7991, 63.5551 )
 frames = SubResource( 2 )
 animation = "walking"
-frame = 3
+frame = 2
 playing = true
 
 [node name="LittleGirl" type="AnimatedSprite" parent="."]
