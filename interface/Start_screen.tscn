@@ -1,59 +1,124 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://music/pilgrimage.wav" type="AudioStream" id=1]
 [ext_resource path="res://witch/witch_spritesheet.png" type="Texture" id=2]
-[ext_resource path="res://villager/villager_carring3.png" type="Texture" id=3]
+[ext_resource path="res://villager/villager_spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://assets_shared/background.png" type="Texture" id=4]
 [ext_resource path="res://assets_shared/well.png" type="Texture" id=5]
 [ext_resource path="res://interface/New Project (2).png" type="Texture" id=6]
-[ext_resource path="res://villager/villager_walking3.png" type="Texture" id=7]
 [ext_resource path="res://interface/button_or.png" type="Texture" id=8]
-[ext_resource path="res://villager/villager_walking5.png" type="Texture" id=9]
-[ext_resource path="res://villager/villager_carring4.png" type="Texture" id=10]
-[ext_resource path="res://villager/villager_walking2.png" type="Texture" id=11]
-[ext_resource path="res://villager/villager_walking4.png" type="Texture" id=12]
-[ext_resource path="res://villager/villager_carring5.png" type="Texture" id=13]
 [ext_resource path="res://interface/button_x.png" type="Texture" id=14]
 [ext_resource path="res://interface/button_press.png" type="Texture" id=15]
-[ext_resource path="res://villager/villager_walking1.png" type="Texture" id=16]
-[ext_resource path="res://villager/villager_carring2.png" type="Texture" id=18]
 [ext_resource path="res://interface/button_z.png" type="Texture" id=19]
-[ext_resource path="res://villager/villager_idle2.png" type="Texture" id=20]
-[ext_resource path="res://villager/villager_idle1.png" type="Texture" id=21]
-[ext_resource path="res://villager/villager_idle3.png" type="Texture" id=22]
-[ext_resource path="res://villager/villager_idle4.png" type="Texture" id=23]
-[ext_resource path="res://villager/villager_throw1.png" type="Texture" id=24]
-[ext_resource path="res://villager/villager_throw2.png" type="Texture" id=25]
-[ext_resource path="res://villager/villager_carring1.png" type="Texture" id=26]
 [ext_resource path="res://world/Tileset.tres" type="TileSet" id=27]
 [ext_resource path="res://interface/start_screen.gd" type="Script" id=28]
 
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 272, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 288, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 304, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 320, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 336, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 352, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 3 )
+region = Rect2( 80, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "throwing",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 18 ), ExtResource( 3 ), ExtResource( 10 ), ExtResource( 13 ) ],
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 } ]
 
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 3 )
+region = Rect2( 272, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 3 )
+region = Rect2( 288, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
+region = Rect2( 304, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
+region = Rect2( 320, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 3 )
+region = Rect2( 368, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 3 )
+region = Rect2( 432, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 3 )
+region = Rect2( 384, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 3 )
+region = Rect2( 400, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 3 )
+region = Rect2( 416, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 9 ) ],
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
 "loop": true,
 "name": "walking",
 "speed": 5.0
@@ -178,7 +243,7 @@ tile_data = PoolIntArray( 524291, 4, 0, 524292, 13, 0, 524296, 4, 0, 524297, 8, 
 position = Vector2( -11.8266, 63.8121 )
 frames = SubResource( 1 )
 animation = "walk"
-frame = 1
+frame = 4
 playing = true
 
 [node name="Villager02" type="AnimatedSprite" parent="."]
