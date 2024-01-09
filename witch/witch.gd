@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var witch_sprite = $Sprite
+onready var cat_raycast = $RayCast2D
 
 var sound_jump = preload("res://witch/sfx/jump.wav")
 var sound_morph = preload("res://witch/sfx/cat.wav")
@@ -53,10 +54,10 @@ func blink():
 	$AudioStreamPlayer.stream = sound_blink
 	$AudioStreamPlayer.play()
 
-func transform_to_cat(transform):
+func toggle_cat_transformation(transform):
 	is_transformed_to_cat = transform
-	$CollisionShape2D.scale.y = 0.5 if transform else 1
-	$CollisionShape2D.scale.x = 0.5 if transform else 1
+	var scale_factor = 0.5 if transform else 1
+	$CollisionShape2D.scale = Vector2(scale_factor, scale_factor)
 	$AudioStreamPlayer.stream = sound_morph
 	$AudioStreamPlayer.play()
 
@@ -111,7 +112,10 @@ func _physics_process(delta):
 			
 	# Transforming
 	if Upgrades.CAT and Input.is_action_just_pressed("down"):
-		transform_to_cat(!is_transformed_to_cat)
+		if !is_transformed_to_cat:
+			toggle_cat_transformation(true)
+		elif !cat_raycast.is_colliding():
+			toggle_cat_transformation(false)
 		
 	# Blinking
 	if Upgrades.TUNIC and Input.is_action_just_pressed("blink"):
