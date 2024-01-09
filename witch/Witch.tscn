@@ -1,12 +1,8 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://witch/witch.gd" type="Script" id=1]
 [ext_resource path="res://witch/witch_spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://witch/cat_spritesheet.png" type="Texture" id=11]
-[ext_resource path="res://witch/sfx/jump.wav" type="AudioStream" id=23]
-[ext_resource path="res://witch/sfx/cat.wav" type="AudioStream" id=24]
-[ext_resource path="res://fireball/fireball.wav" type="AudioStream" id=25]
-[ext_resource path="res://witch/sfx/blink.wav" type="AudioStream" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.09299, 7.49766 )
@@ -154,26 +150,12 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "Running_cat"
-frame = 1
 playing = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-
-[node name="sound_jump" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 23 )
-volume_db = -20.0
-
-[node name="sound_cat" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 24 )
-
-[node name="sound_shoot" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 25 )
-volume_db = -10.0
-
-[node name="sound_blink" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 26 )
-volume_db = -20.0
 
 [node name="transform" type="Particles2D" parent="."]
 visible = false

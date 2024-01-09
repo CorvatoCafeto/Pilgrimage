@@ -11,12 +11,8 @@ var is_dead = false
 func dead():
 	is_dead = true
 	velocity = Vector2(0,0)
-	#Doesn't work somehow
-	#$Collision.disabled = true
 	$Collision.queue_free()
 	$AnimatedSprite.set_animation('dead')
-	#Shrink collision
-	#$Collision.scale.y = 0
 	$AudioStreamPlayer.play()
 	if Upgrades.VENGANCE > 0:
 		Upgrades.VENGANCE -= 1
@@ -24,7 +20,7 @@ func dead():
 		$Timer.start()
 	
 func _physics_process(_delta):
-	if !is_dead:		
+	if !is_dead:
 		velocity.x = SPEED * direction
 		$AnimatedSprite.play("Walking")
 		if direction == 1:
